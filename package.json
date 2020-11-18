@@ -9,9 +9,5 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.19.2",
-    "dotenv": "^8.2.0",
-    "ravendb": "^4.1.8",
-    "uuid": "^8.0.0"
   }
 }
