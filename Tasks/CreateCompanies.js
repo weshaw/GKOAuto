@@ -8,16 +8,19 @@ if(!fs.existsSync(exportPath)) {
 }
 module.exports = () => {
     const f = (file||`${exportPath}/companies`)+".txt";
+    if(!fs.existsSync(f)) {
+        fs.writeFileSync(f,"");
+    }
     return fs.promises.readFile(f, "utf8").then(
-        data => data.split("\n")
-            .map(l => {
-                const line = l.replace(/^[\s+]/gi,'').replace(/[\s+]$/gi,'');
-                const dir = `${exportPath}/${line}`;
-                console.log(dir);
-                if(!fs.existsSync(dir)) {
-                    fs.mkdirSync(dir);
-                }
-                return line;
-            })
+    data => data.split("\n")
+        .map(l => {
+            const line = l.replace(/^[\s+]/gi,'').replace(/[\s+]$/gi,'');
+            const dir = `${exportPath}/${line}`;
+            console.log(dir);
+            if(!fs.existsSync(dir)) {
+                fs.mkdirSync(dir);
+            }
+            return line;
+        })
     );
 }
